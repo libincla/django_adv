@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} book search {% endblock %}
+
+{% block content %} 
+<body>
+     <div> you searched for <strong> {{ query }} </strong> </div>
+     <div>
+           {% if books %}
+               <p> Found {{ books| length }} book{{ books| pluralize }}. </p>
+               <ul>
+                   {% for book in books %}
+                       <li> {{ book.title }} </li>
+                   {% endfor %}
+               </ul>
+           {% else %}
+               <p> no match </p>
+           {% endif %}
+</body>
+{% endblock %}

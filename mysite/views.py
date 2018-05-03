@@ -39,3 +39,23 @@ def hours_ahead(request, offset):
     html = "in %s hour, it will be %s." % (offset, dt)
     context_dict = {'hour_offset' : offset, 'next_time' : dt }
     return render(request, 'hours_ahead.html', context=context_dict)
+
+def show_ua(request):
+    ua = request.META.get('HTTP_USER_AGENT', 'unknown')
+    return HttpResponse("you browser is %s" % ua )
+
+
+def display_meta(request):
+    values = request.META.items()
+    html = []
+    for i, j in values:
+        html.append('<tr><td>%s</td><td>%s</td></tr>' %(i, j))
+    return HttpResponse('<table>%s</table>' % '\n'.join(html))
+
+def display_whole(request):
+    values = request.POST.items()
+    h = []
+    for x, y in values:
+        h.append('<tr><td>%s</td><td>%s</td></tr>' %(x, y))
+    return HttpResponse('<table>%s</table>' % h)
+

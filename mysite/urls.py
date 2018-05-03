@@ -15,12 +15,20 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from mysite.views import hi, current_datetime, hours_ahead
+from mysite.views import hi, current_datetime, hours_ahead, show_ua, display_meta, display_whole 
+from books import views
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^hi/$',  hi),
     url(r'^time/$', current_datetime),
     url(r'^other_time/$', current_datetime),
-    url(r'^time/plus/(\d{1,2})/$', hours_ahead)
+    url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^showua/$', show_ua),
+    url(r'^dm/$', display_meta),
+    url(r'^dw/$', display_whole),
+    url(r'^search/$', views.search),
+    url(r'^search-form/$', views.search_form),
+    url(r'^contact/$', views.contact),
     #url(r'^time/plus/\d{1,2}/$', hours_ahead)
 ]

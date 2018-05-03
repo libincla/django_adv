@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+TEMPLATE_DIR = '/Data/apps/dj_adv/mysite/books/templates'
 
 # Application definition
 
@@ -56,7 +57,8 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [ TEMPLATE_DIR ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,3 +122,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.exmail.qq.com'
+EMAIL_HOST_USER = 'libin@huitongjy.com'
+EMAIL_HOST_PASSWORD = 'Cla2026825'
+#EMAIL_PORT = 25
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FORM_EMAIL = 'libin@huitongjy.com'

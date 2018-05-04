@@ -36,3 +36,6 @@ def contact(request):
     else:
         form = ContactForm( initial={'subject' : 'how do you do?'})
     return render(request, 'contact_form.html', {'form' : form})
+
+def mytest(request, testid="3"):
+    return HttpResponse('<h1> this is %r </h1>' % testid)

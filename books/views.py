@@ -5,6 +5,8 @@ from books.models import Book
 from books.forms import ContactForm
 from django.core.mail import send_mail
 
+from django.template import loader, RequestContext 
+
 # Create your views here.
 
 def search_form(request):
@@ -39,3 +41,22 @@ def contact(request):
 
 def mytest(request, testid="3"):
     return HttpResponse('<h1> this is %r </h1>' % testid)
+
+def custom_proc(request):
+    return {
+        'app' : 'my app',
+        'user' : request.user,
+        'ip_address' : request.META['REMOTE_ADDR']
+    }
+
+
+def view1(request):
+    t = loader.get_template('template1.html')
+    c = RequestContext(request, {'message': 'view1'}, processors=[custom_proc])
+    return t.render(c)
+
+ 
+def view2(request):
+    t = loader.get_template('template2.html')
+    c = RequestContext(request, {'message': 'view2'}, processors=[custom_proc])
+    return t.render(c)

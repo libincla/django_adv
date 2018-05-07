@@ -26,13 +26,79 @@ class Author(models.Model):
         return u'%s %s' % (self.first_name, self.last_name)
 
 
+# book manager
+
+class ZhangsanManager(models.Manager):
+    def get_queryset(self):
+        return super(ZhangsanManager, self).get_queryset().filter(author='zhang san')
+
+class BookManager(models.Manager):
+
+    def title_count(self, keyword):
+        return self.filter(title__icontains=keyword).count()
+
+
 class Book(models.Model):
     title = models.CharField(max_length=200)
+    author = models.CharField(max_length=50)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField(blank=True, null=True)
+    num_pages = models.IntegerField(blank=True, null=True)
+    #objects  = BookManager()``
+    objects = models.Manager()
+
+    zhangsan_objects = ZhangsanManager()
 
     def __str__(self):
         return self.title
 
 
+
+
+class MaleManager(models.Manager):
+    def get_queryset(self):
+        return super(MaleManager, self).get_queryset().filter(gender='M')
+
+class FemaleManager(models.Manager):
+    def get_queryset(self):
+        return super(FemaleManager, self).get_queryset().filter(gender='F')
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=200)
+    birth_date = models.DateField(blank=True, null=True)
+    gender = models.CharField(max_length=1, choices = (('M', 'Male'), ('F', 'Female')))
+ 
+    people = models.Manager()
+    men = MaleManager()
+    women = FemaleManager()
+
+    def __str__(self):
+        return u'%s %s' % (self.first_name, self.last_name)
+
+    def baby_boomer_status(self):
+        import datetime
+        if self.birth_date < datetime.date(1940, 1, 1):
+            return 'pre-boomer'
+        elif self.birth_date < datetime.date(1966, 1, 1):
+            return 'heihei boomer'
+        else:
+            return 'post-boomer'
+    def _get_full_name(self):
+        return '%s %s' % (self.first_name, self.last_name)
+
+    full_name = property(_get_full_name)
+
+
+class Blog(models.Model):
+    name = models.CharField(max_length=300)
+    tagline = models.TextField()
+ 
+    def save(self, *args, **kwargs):
+        if self.name == 'libin':
+            return
+        else:
+            super(Blog, self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name

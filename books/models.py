@@ -17,38 +17,30 @@ class Publisher(models.Model):
         ordering = ['name']
 
 class Author(models.Model):
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(blank=True, verbose_name='e-MAIL')
+
+    salutation = models.CharField(max_length=50)
+    name = models.CharField(max_length=200, blank=True)
+    email = models.EmailField()
+    headshot = models.ImageField(upload_to='author_headshots', blank=True, null=True)
 
  
     def __str__(self):
-        return u'%s %s' % (self.first_name, self.last_name)
+        return self.name
+
 
 
 # book manager
 
-class ZhangsanManager(models.Manager):
-    def get_queryset(self):
-        return super(ZhangsanManager, self).get_queryset().filter(author='zhang san')
-
-class BookManager(models.Manager):
-
-    def title_count(self, keyword):
-        return self.filter(title__icontains=keyword).count()
 
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=50)
-    authors = models.ManyToManyField(Author)
+    authors = models.ManyToManyField('Author')
     publisher = models.ForeignKey(Publisher)
     publication_date = models.DateField(blank=True, null=True)
     num_pages = models.IntegerField(blank=True, null=True)
     #objects  = BookManager()``
-    objects = models.Manager()
-
-    zhangsan_objects = ZhangsanManager()
 
     def __str__(self):
         return self.title

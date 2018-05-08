@@ -18,6 +18,8 @@ from django.conf import settings
 from django.contrib import admin
 from mysite.views import hi, current_datetime, hours_ahead, show_ua, display_meta, display_whole 
 from books import views
+from books.views import PublisherList, BookList
+
 
 extra_patterns = [
     url(r'^mytest/$', views.mytest),
@@ -36,6 +38,7 @@ urlpatterns = [
     url(r'^search-form/$', views.search_form),
     url(r'^contact/$', views.contact),
     url(r'^aha/', include(extra_patterns), {'testid': 9}),
+    url(r'^publishers/$', PublisherList.as_view()),
     #url(r'^time/plus/\d{1,2}/$', hours_ahead)
 ]
 

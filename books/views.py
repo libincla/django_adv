@@ -7,7 +7,34 @@ from django.core.mail import send_mail
 
 from django.template import loader, RequestContext 
 
+from django.views.generic import ListView, DetailView
+from books.models import Publisher, Book
+
 # Create your views here.
+
+class PublisherList(ListView):
+    model = Publisher
+
+class BookList(ListView):
+    queryset = Book.objects.order_by('-publication_date')
+    context_object_name = 'book_list'
+
+#class PublisherDetail(DetailView):
+#    model = Publisher
+#
+#    def get_context_data(self, **kwargs):
+#        context = super(PublisherDetail, self).get_context_data(**kwargs)
+#        context['book_list'] = Book.objects.all()
+#        return context
+         
+
+
+class JilinList(ListView):
+    context_object_name = 'book_list'
+    queryset = Book.objects.filter(publisher__name='publisher of JiLin')
+
+    template_name = 'books/jilin_list.html'
+    
 
 def search_form(request):
     return render(request, 'search_form.html')

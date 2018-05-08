@@ -1,0 +1,12 @@
+{% extends '/Data/apps/dj_adv/mysite/books/templates/base.html' %}
+
+{% block content %}
+
+    <h2> Show Books </h2>
+
+    <ul>
+        {% for x in object_list %}
+            <li> {{ x.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

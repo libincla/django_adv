@@ -9,6 +9,10 @@ from django.template import loader, RequestContext
 
 from django.views.generic import ListView, DetailView
 from books.models import Publisher, Book
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
 
 # Create your views here.
 
@@ -28,16 +32,43 @@ class BookList(ListView):
 #        return context
          
 
+def my_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
-class JilinList(ListView):
-    context_object_name = 'book_list'
-    queryset = Book.objects.filter(publisher__name='publisher of JiLin')
+        user = authenticate(username=username, password=password)
 
-    template_name = 'books/jilin_list.html'
-    
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect('/search-form/')
+            else:
+                return HttpResponse('your account is not active')
+        else:
+            return HttpResponse('invalid login, you need sign up first')
 
+    else:
+        return render(request, 'registration/login.html', {})
+
+
+def logout_view(request):
+    logout(request)
+    return  HttpResponseRedirect('/dw/')
+
+
+def email_check(user):
+    return user.email.endswith('@qq.com')
+
+
+
+@login_required(login_url='/login/')
 def search_form(request):
-    return render(request, 'search_form.html')
+    user = request.user
+    #user = request.POST.get('username')
+    return render(request, 'search_form.html', {'username' : user })
+
+
 
 def search(request):
     #error = False
@@ -54,6 +85,7 @@ def search(request):
     return render(request, 'search_form.html', {'errors': errors })
 
 
+@user_passes_test(email_check, login_url='/hi/')
 def contact(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)

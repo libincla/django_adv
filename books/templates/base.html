@@ -5,6 +5,11 @@
 
    <body>
       <h1> My helpful </h1>
+      {% if user.is_authenticated %}
+          <p> Welcome, {{ user.username }}. Thanks for logging in . </p>
+      {% else %}
+          <p> Welcome, new user, plz login in </p>
+      {% endif %}
       {% block content %}
       {% endblock %}
      

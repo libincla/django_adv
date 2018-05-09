@@ -19,6 +19,7 @@ from django.contrib import admin
 from mysite.views import hi, current_datetime, hours_ahead, show_ua, display_meta, display_whole 
 from books import views
 from books.views import PublisherList, BookList
+from django.contrib.auth import views as auth_views
 
 
 extra_patterns = [
@@ -27,6 +28,9 @@ extra_patterns = [
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^accounts/', include('books.backends.simple.urls')),
+    #url(r'^accounts/', 'django.contrib.auth.views.login'),
+    url(r'^accounts/login/$', auth_views.login),
     url(r'^hi/$',  hi),
     url(r'^time/$', current_datetime),
     url(r'^other_time/$', current_datetime),
@@ -39,6 +43,8 @@ urlpatterns = [
     url(r'^contact/$', views.contact),
     url(r'^aha/', include(extra_patterns), {'testid': 9}),
     url(r'^publishers/$', PublisherList.as_view()),
+    url(r'^login/$', views.my_view),
+    url(r'^logout/$', views.logout_view),
     #url(r'^time/plus/\d{1,2}/$', hours_ahead)
 ]
 

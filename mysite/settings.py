@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -124,9 +125,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.exmail.qq.com'
-EMAIL_HOST_USER = 'libin@huitongjy.com'
-EMAIL_HOST_PASSWORD = 'Cla2026825'
 #EMAIL_PORT = 25
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-DEFAULT_FORM_EMAIL = 'libin@huitongjy.com'
+
+if socket.gethostname() == 'jdu4e00u53f7':
+    DEBUG = TEMPLATE_DEBUG = True
+else:
+    DEBUG = TEMPLATE_DEBUG = False

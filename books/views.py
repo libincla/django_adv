@@ -1,3 +1,4 @@
+#coding:utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
@@ -13,6 +14,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
+import csv
+import codecs
 
 # Create your views here.
 
@@ -119,3 +122,21 @@ def view2(request):
     t = loader.get_template('template2.html')
     c = RequestContext(request, {'message': 'view2'}, processors=[custom_proc])
     return t.render(c)
+
+
+
+def my_image(request):
+    image_data = open('/Data/apps/imgs/test1.png', 'rb').read()
+    return HttpResponse(image_data, content_type='image/png')
+
+
+def some_view(request):
+    response = HttpResponse(content_type='text/csv;charset=UTF-8')
+    response.write(codecs.BOM_UTF8)
+    response['Content-Disposition'] = 'attachment; filename="somefile.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['第一排', '赵', '钱', '孙'])
+    writer.writerow(['第二排', '李', 'B', 'C', 'Testing' ])
+
+    return response

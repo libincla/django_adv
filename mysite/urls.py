@@ -45,6 +45,8 @@ urlpatterns = [
     url(r'^publishers/$', PublisherList.as_view()),
     url(r'^login/$', views.my_view),
     url(r'^logout/$', views.logout_view),
+    url(r'^mi/$', views.my_image),
+    url(r'^rs/$', views.some_view),
     #url(r'^time/plus/\d{1,2}/$', hours_ahead)
 ]
 

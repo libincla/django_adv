@@ -133,3 +133,6 @@ if socket.gethostname() == 'jdu4e00u53f7':
     DEBUG = TEMPLATE_DEBUG = True
 else:
     DEBUG = TEMPLATE_DEBUG = False
+#EMAIL_HOST_USER = 'xxxxxx'
+#EMAIL_HOST_PASSWORD = 'xxxxxxx'
+#DEFAULT_FORM_EMAIL = 'xxxxxxxxx'

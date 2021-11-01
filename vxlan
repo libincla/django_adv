@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-01T02:50:43.676Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="NlY0RwhPd0ctL7u3Mx7s" version="15.3.1" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-01T03:58:38.753Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="Hiu4mBniN1glyxBoeyZf" version="15.3.1" type="github">
   <diagram id="KLOU4p3lNQWISmbiQuTZ" name="Page-1">
     <mxGraphModel dx="937" dy="521" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
       <root>
@@ -65,7 +65,7 @@
         <mxCell id="jh95lBljdH9lMqgegkJS-7" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="KXmvwCR0wate-IQyN1XQ-17" target="jh95lBljdH9lMqgegkJS-6">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="KXmvwCR0wate-IQyN1XQ-17" value="flannel.1&lt;br&gt;10.244.4.0/32&lt;br&gt;flanneld" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
+        <mxCell id="KXmvwCR0wate-IQyN1XQ-17" value="flannel.1&lt;br&gt;10.244.4.0/32&lt;br&gt;flanneld" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;glass=1;" parent="1" vertex="1">
           <mxGeometry x="110" y="320" width="210" height="50" as="geometry" />
         </mxCell>
         <mxCell id="KXmvwCR0wate-IQyN1XQ-20" value="veth1d1b1846" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" parent="1" vertex="1">
@@ -91,6 +91,30 @@
         </mxCell>
         <mxCell id="jh95lBljdH9lMqgegkJS-6" value="etcd" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="420" y="380" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-9" value="" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="970" width="650" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-10" value="外层以太网头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="170" y="970" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-11" value="外层IP头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="970" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-12" value="外层UDP头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="970" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-13" value="VXLAN头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="970" width="100" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-14" value="内层以太网头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="970" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-15" value="内层IP头部" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="970" width="90" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="jh95lBljdH9lMqgegkJS-16" value="payload" style="rounded=0;whiteSpace=wrap;html=1;glass=1;" vertex="1" parent="1">
+          <mxGeometry x="740" y="970" width="80" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-11-08T05:39:24.200Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="anrSl2VRtSJgmBGQQEIw" version="15.6.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-11-08T05:40:29.177Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="OboymFO-NTiQ2VWFm0WG" version="15.6.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="2641" dy="620" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -244,6 +244,9 @@
         <mxCell id="Es175J8RI6XL-tL0gYPX-86" value="PreBind" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;gradientColor=none;verticalAlign=middle;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="164.5" y="1480" width="207.5" height="40" as="geometry" />
         </mxCell>
+        <mxCell id="Es175J8RI6XL-tL0gYPX-103" style="edgeStyle=none;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;startFill=0;endArrow=classicThin;endFill=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="Es175J8RI6XL-tL0gYPX-87" target="Es175J8RI6XL-tL0gYPX-102">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="Es175J8RI6XL-tL0gYPX-87" value="Bind" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;gradientColor=none;verticalAlign=middle;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="164.5" y="1560" width="207.5" height="40" as="geometry" />
         </mxCell>
@@ -272,7 +275,7 @@
           <mxGeometry x="120" y="1560" width="270" height="110" as="geometry" />
         </mxCell>
         <mxCell id="Es175J8RI6XL-tL0gYPX-102" value="将Pod绑定到节点" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;dashed=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="450" y="1565" width="60" height="30" as="geometry" />
+          <mxGeometry x="470" y="1565" width="180" height="35" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
